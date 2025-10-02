@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #00ff41;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    opacity: 1;
+    animation: fadeIn 2s ease-in;
+}
+
+.ascii-art {
+    font-size: clamp(0.25rem, 0.5vw, 0.6rem);
+    line-height: 1.1;
+    color: #00ff41;
+    text-shadow: 0 0 15px rgba(0, 255, 65, 0.9), 0 0 25px rgba(0, 255, 65, 0.5);
+    white-space: pre;
+    letter-spacing: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 65, 0.7));
+    font-weight: normal;
+    overflow-x: auto;
+}
+
+.ascii-art.loaded {
+    opacity: 1;
+    animation: glitch 3s infinite;
+}
+
+.subtitle {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    color: #00d4ff;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+    animation: pulse 2s ease-in-out infinite;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes glitch {
+    0%, 90%, 100% {
+        transform: translate(0);
+    }
+    92% {
+        transform: translate(-2px, 1px);
+    }
+    94% {
+        transform: translate(2px, -1px);
+    }
+    96% {
+        transform: translate(-1px, 2px);
+    }
+    98% {
+        transform: translate(1px, -2px);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .ascii-art {
+        font-size: clamp(0.25rem, 1.5vw, 0.6rem);
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 0.2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .ascii-art {
+        font-size: clamp(0.2rem, 2vw, 0.4rem);
+    }
+    
+    .subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 0.15em;
+    }
+}
+
